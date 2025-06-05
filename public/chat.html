@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Murmur Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Murmur.</a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="highlights.html">Highlights</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Log out</a>
+    </div>
+    <div class="hamburger-menu">&#9776;</div>
+  </nav>
+
+  <main class="chat-container">
+    <h2>Global Chatroom</h2>
+    <div id="messages" class="chat-box"></div>
+    <input id="messageInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const screenName = sessionStorage.getItem('screenName');
+    if (!screenName) {
+      window.location.href = 'login.html'; // redirect if not logged in
+    }
+
+    const socket = io();
+    socket.emit('setScreenName', screenName);
+
+    socket.on('chatMessage', ({ name, msg }) => {
+      const div = document.createElement('div');
+      div.textContent = `${name}: ${msg}`;
+      document.getElementById('messages').appendChild(div);
+    });
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      if (message) {
+        socket.emit('chatMessage', message);
+        input.value = '';
+      }
+    }
+    document.getElementById('messageInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent new line
+      sendMessage();
+    }
+  });
+  </script>
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>

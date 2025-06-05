@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    padding: 0.75em 1.5em;
+    border-radius: 5px;
+    margin: 0.5em;
+    display: inline-block;
+}
+
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -250px; /* hidden offscreen */
+  width: 250px;
+  height: 100vh;
+  background-color: #111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+/* When active, slide sidebar in */
+.nav-links.active {
+  right: 0;
+}
+
+/* Style links inside sidebar */
+.nav-links a {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+.nav-links a:hover {
+  background-color: #333;
+}
+
+/* Hamburger styles */
+.hamburger-menu {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 15px;
+  color: #333;
+  display: block;
+  
+}
+
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: #e6f2ff;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-left, .hero-right {
+  flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
+  min-width: 250px;
+}
+
+.cta-buttons {
+    background-color: #007bff;
+    color: white;
+}
+
+.highlights {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.highlight-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 250px;
+}
+
+.about-devs {
+    padding: 3rem 2rem;
+    background: #f0f0f0;
+    text-align: center;
+}
+
+.dev-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.dev {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 200px;
+}
+
+.footer {
+    padding: 2rem;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.social-links a {
+    margin: 0 1rem;
+    color: white;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 3em auto;
+  padding: 2em;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container input,
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: 3em auto;
+  padding: 2em;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+.chat-box {
+  border: 1px solid #ccc;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 1em;
+  padding: 10px;
+  background-color: #fff;
+}
+input#messageInput {
+  width: 70%;
+  padding: 0.5em;
+}
+button {
+  padding: 0.5em 1em;
+}

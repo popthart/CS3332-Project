@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Highlights</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <!--NAV-->
+        <nav class="navbar">
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="highlights.html">Highlights</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Log in</a>
+                <a href="register.html">Sign up</a>
+            </div>
+
+            <div class="hamburger-menu" id="hamburger">&#9776;</div>
+        </nav>
+
+        <!-- Highlights-->
+         <section class="highlights">
+            <h2>Highlights</h2>
+            <div class="highlight-cards">
+                <!--each feature-->
+                <div class="card">
+                    <h3>Real-time live chatting</h3>
+                    <p>Add friends on Murmur and start chatting</p>
+                </div>
+                <div class="card">
+                    <h3>Meet new friends</h3>
+                    <p>Join public chat rooms and discuss interests</p>
+                </div>
+                <div class="card">
+                    <h3>User authentification</h3>
+                    <p>Secure login/register system</p>
+                </div>
+            </div>
+         </section>
+
+
+        <footer class="footer">
+            <p>Follow us:</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+         </footer>
+         <script>
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        </script>
+    </body>
