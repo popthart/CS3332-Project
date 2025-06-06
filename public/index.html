@@ -7,18 +7,25 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        
-        <!--NAV-->
+        <div class="main-wrapper">
+            <!--NAV-->
         <nav class="navbar">
+            <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeSidebar">×</button>
+                <a href="index.html">Home</a>
+                <a href="highlights.html">Highlights</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Log in</a>
+                <a href="register.html">Sign up</a>
+            </div>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="highlights.html">Highlights</a>
-            <a href="about.html">About</a>
-            <a href="login.html">Log in</a>
-            <a href="register.html">Sign up</a>
-        </div>
-        <div class="hamburger-menu" id="hamburger">&#9776;</div>
+            <div class="hamburger-menu" id="hamburger">
+                    <svg width="32" height="32" viewBox="0 0 100 80" fill="#1d2826">
+                        <rect width="100" height="15" rx="8"></rect>
+                        <rect y="30" width="100" height="15" rx="8"></rect>
+                        <rect y="60" width="100" height="15" rx="8"></rect>
+                    </svg>
+                </div>
         </nav>
 
         <!--Hero-->
@@ -36,8 +43,9 @@
                 </div>
             </div>
         </header>
+        </div>
 
-         <!--Footer-->
+        <!--Footer-->
          <footer class="footer">
             <p>Follow us:</p>
             <div class="social-links">
@@ -45,9 +53,8 @@
                 <a href="#">Instagram</a>
                 <a href="#">Twitter</a>
             </div>
-         </footer>
-    </body>
-    <script src="/socket.io/socket.io.js"></script>
+         </footer>   
+         <script src="/socket.io/socket.io.js"></script>
     <script>
         const screenName = sessionStorage.getItem('screenName');
         const socket = io();
@@ -68,11 +75,18 @@
     </script>
     <script>
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
-    </script>
+
+    const closeBtn = document.getElementById('closeSidebar');
+    const navLinks = document.getElementById('navLinks');
+
+    closeBtn.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    });
+    </script>   
+    </body>
 </html>
 

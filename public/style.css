@@ -1,8 +1,17 @@
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 body {
-    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #f9f9f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
 a {
@@ -27,9 +36,23 @@ a {
   color: white;
   display: flex;
   flex-direction: column;
-  padding-top: 60px;
   transition: right 0.3s ease;
-  z-index: 1000;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.main-wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
 }
 
 /* When active, slide sidebar in */
@@ -42,11 +65,30 @@ a {
   padding: 15px 20px;
   text-decoration: none;
   color: white;
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .nav-links a:hover {
   background-color: #333;
+}
+
+.navbar{
+  position: relative;
+  z-index: 2;
+}
+
+.close-btn{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 36px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 101;
+  user-select: none;
+  padding: 0;
 }
 
 /* Hamburger styles */
@@ -56,32 +98,69 @@ a {
   right: 20px;
   font-size: 30px;
   cursor: pointer;
-  user-select: none;
-  padding: 10px 15px;
-  color: #333;
-  display: block;
-  
 }
-
 
 .hero {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
+    flex: 1;
     background: #e6f2ff;
-    gap: 2rem;
-    flex-wrap: wrap;
+    min-height: 0;
 }
 
 .hero-left, .hero-right {
-  flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis */
-  min-width: 250px;
+  flex: 1; 
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-left{
+  background-color: #000;
+  color: white;
+  flex-direction: column;
+}
+
+.hero-left h1{
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-left h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0;
+}
+
+.hero-right {
+  background: linear-gradient(to right, #146a8a, #bbde72);
+  color: white;
+  flex-direction: column;
+  padding: 2rem;
+
 }
 
 .cta-buttons {
-    background-color: #007bff;
-    color: white;
+    margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.btn.login {
+  background-color: white;
+  color: #0077cc;
+  border: 2px solid #0077cc;
+}
+
+.btn.signup {
+  background-color: #0077cc;
+  color: white;
+  border: 2px solid #0077cc;
 }
 
 .highlights {
@@ -118,17 +197,22 @@ a {
 }
 
 .dev {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 1rem;
     border-radius: 10px;
     max-width: 200px;
 }
 
 .footer {
-    padding: 2rem;
-    background-color: #333;
-    color: white;
-    text-align: center;
+  background: linear-gradient(to right, #000000, #1a2d2d); /* match hero background */
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 1rem;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .social-links a {
