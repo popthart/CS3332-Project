@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <!--NAV-->
+        <nav class="navbar">
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="highlights.html">Highlights</a>
+                <a href="about.html">About</a>
+                <a href="login.html">Log in</a>
+                <a href="register.html">Sign up</a>
+            </div>
+
+            <div class="hamburger-menu" id="hamburger">&#9776;</div>
+        </nav>
+
+         <!--About-->
+         <section class="about-devs">
+            <h2>About our devs</h2>
+            <div class="dev-cards">
+                <div class="dev">
+                    <h3>Alexander Lawson Davis</h3>
+                    <p>Team Lead</p>
+                </div>
+                <div class="dev">
+                    <h3>Elizabeth Hartley Szekely</h3>
+                    <p>Designer & Developer</p>
+                </div>
+                <div class="dev">
+                    <h3>Rayaan Adil Cheema</h3>
+                    <p>Github Expert & Developer</p>
+                </div>
+            </div>
+         </section>
+
+        <footer class="footer">
+            <p>Follow us:</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+         </footer>
+         <script>
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        </script>
+    </body>
