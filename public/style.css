@@ -66,6 +66,7 @@ a {
   text-decoration: none;
   color: white;
   font-size: 30px;
+  padding: 35px;
 }
 
 .nav-links a:hover {
@@ -105,6 +106,7 @@ a {
     flex: 1;
     background: #e6f2ff;
     min-height: 0;
+    
 }
 
 .hero-left, .hero-right {
@@ -115,10 +117,29 @@ a {
   justify-content: center;
 }
 
+.img-wrapper {
+  padding-top: 350px;
+  padding-right: 15px; /*looks more aligned*/
+  flex: 1; 
+  display: flex;
+  align-items: center;  
+  justify-content: center; 
+}
+
+.murmur-logo {
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+}
+
 .hero-left{
+  flex: 1;
+  display: flex;
   background-color: #000;
   color: white;
   flex-direction: column;
+  text-align: center;
+  height: 100vh;
 }
 
 .hero-left h1{
