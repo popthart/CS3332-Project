@@ -1,0 +1,71 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('img/green-snake.png') no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.login-logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.login-box h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4a8ac4;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-box button:hover {
+  background-color: #3a76ad;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
