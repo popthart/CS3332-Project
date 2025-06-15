@@ -1,36 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Murmur Chat</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chat.css" />
 </head>
 <body>
 
   <nav class="navbar">
-    <div class="logo"><a href="index.html">Murmur.</a></div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="highlights.html">Highlights</a>
       <a href="about.html">About</a>
       <a href="login.html">Log out</a>
     </div>
-    <div class="hamburger-menu">&#9776;</div>
+    <div class="hamburger-menu" id="hamburger">&#9776;</div>
   </nav>
 
-  <main class="chat-container">
-    <h2>Global Chatroom</h2>
-    <div id="messages" class="chat-box"></div>
-    <input id="messageInput" placeholder="Type a message..." />
-    <button onclick="sendMessage()">Send</button>
-  </main>
+  <div class="chat-container">
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+      <div class="user-profile">
+        <img src="img/default-user.png" alt="User Avatar" />
+        <div>
+          <strong>Elizabeth Szekely</strong>
+          <p style="margin: 0; font-size: 0.9rem;">probably coding and listening to music</p>
+        </div>
+      </div>
+      <ul class="chat-list">
+        <li class="active">
+          <img src="img/default-user.png" width="32" height="32" />
+          <div>
+            <strong>George Washington</strong><br />
+            <span>Typing...</span>
+          </div>
+        </li>
+        <li>
+          <img src="img/default-user.png" width="32" height="32" />
+          <div>
+            <strong>Alexander Hamilton</strong><br />
+            <span>I will not throw away my shot</span>
+          </div>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="chat-main">
+      <div class="chat-header">
+        <div><strong>George Washington</strong></div>
+      </div>
+
+      <div class="chat-messages" id="messages">
+      </div>
+
+      <div class="chat-input">
+        <input id="messageInput" type="text" placeholder="Start a message..." />
+        <button onclick="sendMessage()">😊</button>
+        <button onclick="sendMessage()">📷</button>
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </main>
+  </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const screenName = sessionStorage.getItem('screenName');
     if (!screenName) {
-      window.location.href = 'login.html'; // redirect if not logged in
+      window.location.href = 'login.html';
     }
 
     const socket = io();
@@ -38,7 +76,8 @@
 
     socket.on('chatMessage', ({ name, msg }) => {
       const div = document.createElement('div');
-      div.textContent = `${name}: ${msg}`;
+      div.className = name === screenName ? 'chat-message user' : 'chat-message other';
+      div.textContent = msg;
       document.getElementById('messages').appendChild(div);
     });
 
@@ -50,21 +89,30 @@
         input.value = '';
       }
     }
-    document.getElementById('messageInput').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent new line
-      sendMessage();
-    }
-  });
-  </script>
-  <script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
+    document.getElementById('messageInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      const isClickInsideSidebar = navLinks.contains(e.target);
+      const isHamburger = e.target === hamburger || hamburger.contains(e.target);
+
+      if (!isClickInsideSidebar && !isHamburger) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+  </script>
 
 </body>
 </html>
