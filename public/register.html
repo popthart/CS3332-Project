@@ -51,4 +51,26 @@
         });
      </script>
 
+        <script>
+            document.getElementById('signupForm').onsubmit = async function (e) {
+            e.preventDefault();
+
+            const displayName = document.getElementById('displayName').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const password = document.getElementById('password').value;
+
+            const res = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ displayName, userEmail, password })
+            });
+
+            if (res.ok) {
+                alert('Registered! Now log in.');
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById('login-error').textContent = 'Error: Email may already be in use.';
+            }
+            };
+        </script>
     </body>
