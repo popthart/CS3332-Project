@@ -6,9 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/popthart/CS3332-Project.git"
@@ -22,6 +20,7 @@
   },
   "homepage": "https://github.com/popthart/CS3332-Project#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "socket.io": "^4.8.1"
