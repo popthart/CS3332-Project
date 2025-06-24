@@ -4,8 +4,11 @@
   "description": "Group project for software development class. \r To be a collaborator on this project, you must pull the project to your own device as a start. Refer to the video tutorial if you are unsure. :D\r From there, you can use whichever text editor you would like. VSC, Sublime, etc.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/popthart/CS3332-Project.git"
