@@ -1,0 +1,29 @@
+{
+  "name": "cs3332-project",
+  "version": "1.0.0",
+  "description": "Group project for software development class. \r To be a collaborator on this project, you must pull the project to your own device as a start. Refer to the video tutorial if you are unsure. :D\r From there, you can use whichever text editor you would like. VSC, Sublime, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popthart/CS3332-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/popthart/CS3332-Project/issues"
+  },
+  "homepage": "https://github.com/popthart/CS3332-Project#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}
