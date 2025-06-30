@@ -3,13 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Register</title>
-        <link rel="stylesheet" href="style.css" />
+        <title>Murmur</title>
         <link rel="stylesheet" href="register.css" />
     </head>
-
     <body>
-        <!--NAV-->
+        <div class="main-wrapper">
+            <!--NAV-->
         <nav class="navbar">
             <div class="nav-links" id="navLinks">
                 <button class="close-btn" id="closeSidebar">×</button>
@@ -20,65 +19,76 @@
                 <a href="register.html">Sign up</a>
             </div>
 
-            <div class="hamburger-menu" id="hamburger">&#9776;</div>
+            <div class="hamburger-menu" id="hamburger">
+                    <svg width="32" height="32" viewBox="0 0 100 80" fill="#1d2826">
+                        <rect width="100" height="15" rx="8"></rect>
+                        <rect y="30" width="100" height="15" rx="8"></rect>
+                        <rect y="60" width="100" height="15" rx="8"></rect>
+                    </svg>
+                </div>
         </nav>
 
-        <main class="login-container">
-        <h2>Sign up for Murmur!</h2>
-        <form id="signupForm">
-            <input type="text" id="displayName" placeholder="Display name" required />
-            <input type="email" id="userEmail" placeholder="Email" required />
-            <input type="password" id="password" placeholder="Password" required />
-            <input type="password" id="rePassword" placeholder="Re-enter password" required />
-            <button type="submit">Sign Up</button>
-        </form>
-        <p id="login-error" style="color:red;"></p>
-        </main>
-
-        <footer class="footer">
-            <p>Follow us:</p>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+        <!--Hero-->
+        <header class="hero">
+            <div class="hero-left">
+                <img src="img/murmur+logo.png" alt="Murmur and Logo" class="logo-top">
+                <h1>Enjoy real-time <br> chatting with your <br> friends on Murmur!</h1>
+                <h3>You're just a few clicks away</h3>
+                <img src="img/pink-snake.png" alt="pink snake" class="left-bg">
+                <img src="img/arrow.png" alt="arrow" class="arrow">
             </div>
-         </footer>
-         <script>
-            const hamburger = document.getElementById('hamburger');
-            const closeBtn = document.getElementById('closeSidebar');
-            const navLinks = document.getElementById('navLinks');
+            
+            <div class="hero-right">
+                <img src="img/welcome-design.png" alt="welcome-design" class="welcome-design">
+                <div class="form-wrapper">
+                    <form id="signupForm">
+                        <input type="text" id="displayName" placeholder="Display name" required />
+                        <input type="email" id="userEmail" placeholder="Email" required />
+                        <input type="password" id="password" placeholder="Password" required />
+                        <input type="password" id="rePassword" placeholder="Re-enter password" required />
+                        <button type="submit">Register Now</button>
+                    </form>
+                <p id="login-error" style="color:red;"></p> 
+                </div>
+                <img src="img/socials-links.png" alt="Social Links" class="social-links">
+            </div>
+        </header>
+        </div>
 
-            if (hamburger && navLinks && closeBtn){
-                hamburger.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                });
+         <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const screenName = sessionStorage.getItem('screenName');
+        const socket = io();
 
-                closeBtn.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            }
-        </script>
+        socket.emit('setScreenName', screenName);
 
-        <script>
-            document.getElementById('signupForm').onsubmit = async function (e) {
-            e.preventDefault();
+        socket.on('chatMessage', ({ name, msg }) => {
+            const div = document.createElement('div');
+            div.textContent = `${name}: ${msg}`;
+            document.getElementById('messages').appendChild(div);
+        });
 
-            const displayName = document.getElementById('displayName').value;
-            const userEmail = document.getElementById('userEmail').value;
-            const password = document.getElementById('password').value;
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            socket.emit('chatMessage', input.value);
+            input.value = '';
+        }
+    </script>
 
-            const res = await fetch('/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ displayName, userEmail, password })
-            });
+    <script>
+    const hamburger = document.getElementById('hamburger');
+    const closeBtn = document.getElementById('closeSidebar');
+    const navLinks = document.getElementById('navLinks');
 
-            if (res.ok) {
-                alert('Registered! Now log in.');
-                window.location.href = 'login.html';
-            } else {
-                document.getElementById('login-error').textContent = 'Error: Email may already be in use.';
-            }
-            };
-        </script>
+    if (hamburger && navLinks && closeBtn){
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    }
+    </script>   
     </body>
+</html>

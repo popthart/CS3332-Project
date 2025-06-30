@@ -6,7 +6,7 @@ html, body{
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Telegraf', sans-serif;
     background: #f9f9f9;
     color: #333;
     display: flex;
@@ -184,14 +184,18 @@ a {
 
 .hero-right h1{
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 60px;
+  font-family: 'Telegraf', sans-serif;
+  font-size: 65px;
+  font-weight: normal;
 }
 
 .cta-buttons {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
 }
 
 a.btn.login {
