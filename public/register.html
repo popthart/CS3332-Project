@@ -11,8 +11,8 @@
     <body>
         <!--NAV-->
         <nav class="navbar">
-
             <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeSidebar">×</button>
                 <a href="index.html">Home</a>
                 <a href="highlights.html">Highlights</a>
                 <a href="about.html">About</a>
@@ -44,13 +44,20 @@
             </div>
          </footer>
          <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            const closeBtn = document.getElementById('closeSidebar');
+            const navLinks = document.getElementById('navLinks');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-     </script>
+            if (hamburger && navLinks && closeBtn){
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            }
+        </script>
 
         <script>
             document.getElementById('signupForm').onsubmit = async function (e) {

@@ -75,19 +75,21 @@
             input.value = '';
         }
     </script>
+
     <script>
     const hamburger = document.getElementById('hamburger');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
     const closeBtn = document.getElementById('closeSidebar');
     const navLinks = document.getElementById('navLinks');
 
-    closeBtn.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    });
+    if (hamburger && navLinks && closeBtn){
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    }
     </script>   
     </body>
 </html>
