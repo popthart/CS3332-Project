@@ -4,14 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Highlights</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="highlights.css" />
     </head>
 
     <body>
         <!--NAV-->
         <nav class="navbar">
-
             <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeSidebar">×</button>
                 <a href="index.html">Home</a>
                 <a href="highlights.html">Highlights</a>
                 <a href="about.html">About</a>
@@ -24,19 +24,25 @@
 
         <!-- Highlights-->
          <section class="highlights">
-            <h2>Highlights</h2>
+            <div class="highlights-header">
+                <h2>Murmur <span class="highlight-word">highlights</span></h2>
+                <img src="img/murmur-logo.png" alt="Murmur Logo" class="header-icon">
+            </div>
             <div class="highlight-cards">
                 <!--each feature-->
                 <div class="card">
-                    <h3>Real-time live chatting</h3>
+                    <img src="img/live-chat.png" alt="chat icon" class="card-img" />
+                    <h3>Real-time live <br> chatting</h3>
                     <p>Add friends on Murmur and start chatting</p>
                 </div>
                 <div class="card">
+                    <img src="img/meet-friends.png" alt="friends icon" class="card-img" />
                     <h3>Meet new friends</h3>
-                    <p>Join public chat rooms and discuss interests</p>
+                    <p>Join public chat rooms and discuss <br>interests</p>
                 </div>
                 <div class="card">
-                    <h3>User authentification</h3>
+                    <img src="img/user-auth.png" alt="user icon" class="card-img" />
+                    <h3>User <br>authentification</h3>
                     <p>Secure login/register system</p>
                 </div>
             </div>
@@ -51,12 +57,19 @@
                 <a href="#">Twitter</a>
             </div>
          </footer>
-         <script>
+        <script>
             const hamburger = document.getElementById('hamburger');
+            const closeBtn = document.getElementById('closeSidebar');
             const navLinks = document.getElementById('navLinks');
 
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
+            if (hamburger && navLinks && closeBtn){
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            }
         </script>
     </body>
