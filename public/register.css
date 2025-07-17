@@ -171,7 +171,7 @@ a {
     left: 90%;
     transform: translateX(-50%);
     width: 1500px;
-    z-index: 2;
+    z-index: 0;
 }
 
 .hero-right{
