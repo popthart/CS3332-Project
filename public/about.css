@@ -193,13 +193,15 @@ body{
   color: white;
   text-align: center;
   padding: 1.5rem 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin-top: auto; /* Push footer to bottom */
   flex-shrink: 0;
   height: 135px;
 }
 
 .social-links a {
+    position: relative;
+    top: 20px;
     margin: 0 1rem;
     color: white;
 }

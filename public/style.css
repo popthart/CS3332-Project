@@ -285,7 +285,7 @@ a.btn.login {
   margin: 0;
   flex-shrink: 0;
   position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 
 .social-links a {
