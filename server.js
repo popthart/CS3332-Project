@@ -145,8 +145,10 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+if (!server.listening) {
+  server.listen(PORT, () => {
+    console.log(`✅ Server started on port ${PORT}`);
+  });
+}
 
 
