@@ -129,8 +129,24 @@ io.on('connection', (socket) => {
     io.emit('chatMessage', { name: socket.screenName || 'Anonymous', msg });
   });
 
+  socket.on ('chatMessage', (msg) => {
+    io.emit('chatMessage', { name: socket.screenName || 'Anonymous', msg });
+  });
+
+  socket.on('chatImage', (imageData) => {
+    io.emit('chatImage', {
+      name: socket.screenName || 'Anonymous',
+      image: imageData
+    });
+  });
+
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
 });
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
 
