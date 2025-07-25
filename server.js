@@ -1,3 +1,7 @@
+
+//AD: Init supporting libraries
+const express = require('express');
+
 let users = [];
 let messages = [];
 
@@ -21,6 +25,7 @@ io.on('connection', socket => {
 });
 
 /* const express = require('express');
+
 const http = require('http');
 const socketIo = require('socket.io');
 const bcrypt = require('bcrypt');
@@ -39,15 +44,7 @@ const db = new Pool({
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-
-app.use(express.static('public'));
-app.use(express.json());
-
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
-
 
 db.query(`
   CREATE TABLE IF NOT EXISTS users (
@@ -90,6 +87,7 @@ app.post('/login', async (req, res) => {
     if (!user) return res.sendStatus(401);
 
     const match = await bcrypt.compare(password, user.password);
+
     if (match) res.sendStatus(200);
     else res.sendStatus(401);
   } catch (err) {
@@ -97,14 +95,25 @@ app.post('/login', async (req, res) => {
     res.sendStatus(500);
   }
 });
+server.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
 
+io.on('connection', (socket) => {
+  console.log('Client connected');
 
-io.on('connection', socket => {
-  socket.on('setScreenName', name => {
+  socket.on('setScreenName', (name) => {
     socket.screenName = name;
   });
 
-  socket.on('chatMessage', msg => {
-    io.emit('chatMessage', { name: socket.screenName, msg });
+  socket.on('chatMessage', (msg) => {
+    io.emit('chatMessage', { name: socket.screenName || 'Anonymous', msg });
   });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+});
+
 });*/
+

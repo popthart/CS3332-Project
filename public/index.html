@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Murmur</title>
         <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.cdnfonts.com/css/telegraf" rel="stylesheet">
     </head>
     <body>
         <div class="main-wrapper">
@@ -38,7 +39,8 @@
             </div>
             
             <div class="hero-right">
-                <p>Log in or sign up for free today</p>
+                <img src="img/green-snake.png" alt="Background snake" class="hero-bg">
+                <h1>Log in or sign up <br> for free today</h1>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn login">Log in</a>
                     <a href="register.html" class="btn signup">Sign up</a>
@@ -75,19 +77,21 @@
             input.value = '';
         }
     </script>
+
     <script>
     const hamburger = document.getElementById('hamburger');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
     const closeBtn = document.getElementById('closeSidebar');
     const navLinks = document.getElementById('navLinks');
 
-    closeBtn.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    });
+    if (hamburger && navLinks && closeBtn){
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    }
     </script>   
     </body>
 </html>

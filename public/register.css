@@ -1,50 +1,262 @@
 
-body {
-  overflow: auto !important;
+*{
+    box-sizing: border-box;
 }
-.login-container {
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Telegraf', sans-serif;
+  color: #fff
+}
+
+body {
+    font-family: 'Telegraf', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    padding: 0.75em 1.5em;
+    border-radius: 5px;
+    margin: 0.5em;
+    display: inline-block;
+}
+
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -250px; /* hidden offscreen */
+  width: 250px;
+  height: 100vh;
+  background-color: #111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.main-wrapper {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+}
+
+/* When active, slide sidebar in */
+.nav-links.active {
+  right: 0;
+}
+
+/* Style links inside sidebar */
+.nav-links a {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  padding: 35px;
+}
+
+.nav-links a:hover {
+  background-color: #333;
+}
+
+.navbar{
+  position: relative;
+  z-index: 2;
+}
+
+.close-btn{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 36px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 101;
+  user-select: none;
+  padding: 0;
+}
+
+/* Hamburger styles */
+.hamburger-menu {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.hero-left{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #ad6ca5, #0b6380);
+    position: relative;
+    overflow: visible;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.login-container h2 {
-    margin-bottom: 25px;
-    color: #333;
+.logo-top{
+    position: relative;
+    bottom: 350px;
+    width: 200px;
+    height: auto;
+    z-index: 2;
+    align-items: center;
 }
 
-.login-container input {
-    display: block;
+.left-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0% 50%;
+    z-index: 0;
 }
 
-.login-container button {
+.hero-left h1{
+    position: absolute;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.hero-left h3{
+    position: absolute;
+    z-index: 3;
+    color: white;
+    text-align: center;
+     font-size: 35px;
+    font-weight: 400;
+    bottom: 250px;
+}
+
+.arrow{
+    position: absolute;
+    bottom: 2%;
+    left: 90%;
+    transform: translateX(-50%);
+    width: 1500px;
+    z-index: 0;
+}
+
+.hero-right{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: 100vh;
+}
+
+.welcome-design{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 1500px;
+    height: auto;
+}
+
+.bottom-right-img{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: auto;
+}
+
+.form-wrapper{
+    z-index: 1;
+    max-width: 400px;
     width: 100%;
-    padding: 12px;
-    background-color: #5b9bd5;
-    color: #fff;
-    font-size: 1rem;
+    text-align: center;
+}
+
+.form-wrapper h1{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#signupForm{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    top: 22px;
+}
+
+#signupForm input{
+    padding: 0.75rem;
+    border-radius: 30px;
     border: none;
-    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    color: #000;
+}
+
+#signupForm button{
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #7c5797;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
 }
 
-.login-container button:hover {
-    background-color: #4a8ac4;
+#signupForm button:hover{
+    background-color: #533568;
 }
 
-#login-error {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: red;
+.social-links{
+    position: absolute;
+    margin: 0 1rem;
+    color: white;
+    text-decoration: none;
+    right: 5px;
+    bottom: 10px;
 }

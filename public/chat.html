@@ -11,6 +11,7 @@
 
   <nav class="navbar">
     <div class="nav-links" id="navLinks">
+      <button class="close-btn" id="closeSidebar">×</button>
       <a href="index.html">Home</a>
       <a href="highlights.html">Highlights</a>
       <a href="about.html">About</a>
@@ -30,14 +31,18 @@
       </div>
       <ul class="chat-list">
         <li class="active">
+
           <img src="img/user-auth.png" width="32" height="32" />
+
           <div>
             <strong>George Washington</strong><br />
             <span>Typing...</span>
           </div>
         </li>
         <li>
+
           <img src="img/user-auth.png" width="32" height="32" />
+
           <div>
             <strong>Alexander Hamilton</strong><br />
             <span>I will not throw away my shot</span>
@@ -48,7 +53,9 @@
 
     <main class="chat-main">
       <div class="chat-header">
+
         <div><strong>Global Chat</strong></div>
+
       </div>
 
       <div class="chat-messages" id="messages">
@@ -104,9 +111,12 @@
 
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    const closeBtn = document.getElementById('closeSidebar');
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
 
     document.addEventListener('click', (e) => {
       const isClickInsideSidebar = navLinks.contains(e.target);
@@ -115,6 +125,15 @@
         navLinks.classList.remove('active');
       }
     });
+
+  }
+
+  if (closeBtn && navLinks) {
+  closeBtn.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+}
+
   </script>
 
 </body>
