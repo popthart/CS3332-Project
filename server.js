@@ -1,5 +1,31 @@
+
 //AD: Init supporting libraries
 const express = require('express');
+
+let users = [];
+let messages = [];
+
+io.on('connection', socket => {
+  console.log('Client connected');
+
+  socket.on('setScreenName', name => {
+    socket.screenName = name;
+    users.push(name);
+  });
+
+  socket.on('chatMessage', msg => {
+    const messageData = { name: socket.screenName || 'Anonymous', msg };
+    messages.push(messageData);
+    io.emit('chatMessage', messageData);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+});
+
+/* const express = require('express');
+
 const http = require('http');
 const socketIo = require('socket.io');
 const bcrypt = require('bcrypt');
@@ -88,3 +114,6 @@ io.on('connection', (socket) => {
     console.log('Client disconnected');
   });
 });
+
+});*/
+
