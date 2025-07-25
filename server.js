@@ -114,9 +114,6 @@ app.post('/login', async (req, res) => {
     res.sendStatus(500);
   }
 });
-server.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
 
 io.on('connection', (socket) => {
   console.log('Client connected');
