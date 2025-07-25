@@ -64,9 +64,16 @@
 
       <div class="chat-input">
         <input id="messageInput" type="text" placeholder="Start a message..." />
-        <button onclick="sendMessage()">😊</button>
-        <button onclick="sendMessage()">📷</button>
-        <button onclick="sendMessage()">Send</button>
+
+        
+        <button type="button" onclick="openEmojiPicker()">😊</button>
+
+        
+        <button type="button" onclick="openFilePicker()">📷</button>
+        <input id="fileInput" type="file" accept="image/*" style="display:none;" onchange="handleFileUpload(event)" />
+
+
+        <button type="button" onclick="sendMessage()">Send</button>
       </div>
     </main>
   </div>
