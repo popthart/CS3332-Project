@@ -35,22 +35,27 @@ io.on('connection', socket => {
 
 
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
-
 const express = require('express');
-
 const http = require('http');
 const socketIo = require('socket.io');
 const bcrypt = require('bcrypt');
 const path = require('path');
+const { Pool } = require('pg');
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
+const server = http.createServer(app);
+const io = socketIo(server);
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-const { Pool } = require('pg');
-require('dotenv').config();
+app.use(express.json());
 
 const db = new Pool({
   host: process.env.PGHOST,
@@ -59,10 +64,6 @@ const db = new Pool({
   database: process.env.PGDATABASE,
   port: process.env.PGPORT
 });
-
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
 
 db.query(`
   CREATE TABLE IF NOT EXISTS users (
