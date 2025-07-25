@@ -428,6 +428,8 @@ img {
   }
 
   .start-chatting{
+    position: relative;
+    left: 10px;
     max-width: 90%;
     margin: 1rem auto 0;
     height: auto;
@@ -435,6 +437,8 @@ img {
   }
 
   .murmur-logo{
+    position: relative;
+    left: 10px;
     width: 250px;
     max-width: 80%;
   }

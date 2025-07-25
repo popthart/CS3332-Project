@@ -1,8 +1,9 @@
 html, body{
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -333,4 +334,139 @@ input#messageInput {
 
 .button {
   padding: 0.5em 1em;
+}
+
+@media (max-width: 1024px) {
+  .hero-right h1{
+    font-size: 50px;
+  }
+
+  .cta-buttons{
+    flex-direction: row;
+    justify-content: center;
+  }
+} 
+
+@media (max-width: 768px){
+  .hero{
+    flex-direction: column;
+    height: auto;
+    background: linear-gradient(   
+      #000000 0%,   /* soft black */
+      #1a2d2d 40%,  /* dark greenish tone */
+      #09313f 80%   /* muted teal */
+    );
+  }
+
+  .hero-bg{
+    opacity: 0.8;
+  }
+
+  .hero-left{
+    height: auto;
+    padding: 2rem 1rem;
+    background: transparent;
+  }
+
+  .hero-right{
+    height: auto;
+    padding: 2rem 1rem;
+     background: transparent
+  }
+
+  .hero-right h1{
+    font-size: 38px;
+    line-height: 1.2;
+  }
+
+  .cta-buttons{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .btn{
+    min-width: 150px;
+    max-width: 60%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .murmur-logo{
+    width: 300px;
+    max-width: 80%;
+  }
+
+  .hamburger-menu svg{
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-links a{
+    font-size: 22px;
+    padding: 20px;
+  }
+
+  .img-wrapper{
+    padding-top: 80px;
+  }
+
+  .start-chatting{
+    max-width: 90%;
+    margin: 1rem auto 0;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    width: 200px; 
+  }
+
+  .start-chatting{
+    max-width: 90%;
+    margin: 1rem auto 0;
+    height: auto;
+    display: block;
+  }
+
+  .murmur-logo{
+    width: 280px;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-right h1{
+    font-size: 30px;
+  }
+
+  .btn{
+    font-size: 1rem;
+  }
+
+  .nav-links a{
+    font-size: 20px;
+  }
+
+  .img-wrapper {
+    padding-top: 50px;
+  }
+
+  .start-chatting{
+    position: relative;
+    left: 10px;
+    max-width: 90%;
+    margin: 1rem auto 0;
+    height: auto;
+    display: block;
+  }
+
+  .murmur-logo{
+    position: relative;
+    left: 10px;
+    width: 250px;
+    max-width: 80%;
+  }
 }
