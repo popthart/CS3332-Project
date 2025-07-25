@@ -4,11 +4,13 @@
 }
 
 html, body{
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Telegraf', sans-serif;
-  color: #fff
+  color: #fff;
+  overflow-x: hidden;
 }
 
 body {
@@ -259,4 +261,105 @@ a {
     text-decoration: none;
     right: 5px;
     bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column; /* stack left & right vertically */
+    height: auto; /* allow natural height instead of forcing full viewport */
+  }
+
+  .hero-left, .hero-right {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+  }
+
+  .logo-top {
+    width: 150px; /* shrink logo */
+    bottom: auto;
+    margin-bottom: 1rem;
+  }
+
+  .hero-left h1 {
+    font-size: 40px; /* smaller heading */
+    position: relative;
+    margin-top: 1rem;
+  }
+
+  .hero-left h3 {
+    font-size: 24px;
+    bottom: auto;
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  .arrow {
+    display: none; /* hide huge arrow for smaller screens */
+  }
+
+  .welcome-design {
+    width: 80%; /* scale down the design image */
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto 1rem;
+  }
+
+  .form-wrapper {
+    max-width: 320px; /* keep form compact */
+    width: 100%;
+  }
+
+  #signupForm button {
+    font-size: 1.2rem;
+    max-width: 180px;
+  }
+
+  .social-links {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-left h1 {
+    font-size: 32px;
+    z-index: 1;
+  }
+
+  .hero-left h3 {
+    font-size: 20px;
+     z-index: 1;
+  }
+
+  .logo-top {
+    width: 120px;
+     z-index: 1;
+  }
+
+  .welcome-design {
+    position: relative;
+    right: 165px;
+    width: 500px;
+    top: 60px;
+  }
+
+  #signupForm input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  #signupForm button {
+    font-size: 1rem;
+    padding: 0.8rem;
+    max-width: 160px;
+  }
+}
+
+/* Prevent sideways scrollbars */
+body, html {
+  overflow-x: hidden;
 }
