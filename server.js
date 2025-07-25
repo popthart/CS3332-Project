@@ -1,6 +1,13 @@
 
+/* 
 //AD: Init supporting libraries
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
 let users = [];
 let messages = [];
@@ -23,8 +30,13 @@ io.on('connection', socket => {
     console.log('Client disconnected');
   });
 });
+*/
 
-/* const express = require('express');
+
+
+
+
+const express = require('express');
 
 const http = require('http');
 const socketIo = require('socket.io');
@@ -44,7 +56,6 @@ const db = new Pool({
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const PORT = process.env.PORT || 3000;
 
 db.query(`
   CREATE TABLE IF NOT EXISTS users (
@@ -114,6 +125,4 @@ io.on('connection', (socket) => {
     console.log('Client disconnected');
   });
 });
-
-});*/
 
