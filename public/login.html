@@ -97,5 +97,35 @@
         });
     }
     </script>   
+
+    <script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const screenName = document.getElementById('userName').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  if (!screenName || !password) return;
+
+  try {
+    const res = await fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ screenName, password })
+    });
+
+    if (res.status === 200) {
+      sessionStorage.setItem('screenName', screenName);
+      window.location.href = 'chat.html';
+    } else {
+      alert('Login failed. Please check your credentials.');
+    }
+  } catch (err) {
+    console.error('Login error:', err);
+    alert('Something went wrong. Please try again.');
+  }
+});
+</script>
+
     </body>
 </html>
